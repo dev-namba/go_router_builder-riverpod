@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_practice/router/core/navigator_key.dart';
+import 'package:go_router_practice/router/routes/home/chat/chat_route.dart';
 import 'package:go_router_practice/router/routes/top_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,6 +14,6 @@ GoRouter router(RouterRef ref) {
     navigatorKey: navigatorKey,
     debugLogDiagnostics: kDebugMode,
     routes: $appRoutes,
-    initialLocation: '/home/chat',
+    initialLocation: ChatRoute().location,
   );
 }
