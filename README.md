@@ -1,4 +1,5 @@
 `GoRouter`、`go_router_builder`、および`Riverpod`を組み合わせて使用し、`ShellRoute`を介してアプリケーション全体に共通のリダイレクトロジックを適用する方法
+`go_router_builder`を使う事による複雑になるコードを分割し、簡潔なコードにする為の方法
 
 ### 概要
 
