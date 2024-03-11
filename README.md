@@ -1,4 +1,4 @@
-`GoRouter`、`go_router_builder`、および`Riverpod`を組み合わせて使用し、`ShellRoute`を介してアプリケーション全体に共通のリダイレクトロジックを適用する方法を説明する例を、より理解しやすく説明します。
+`GoRouter`、`go_router_builder`、および`Riverpod`を組み合わせて使用し、`ShellRoute`を介してアプリケーション全体に共通のリダイレクトロジックを適用する方法
 
 ### 概要
 
