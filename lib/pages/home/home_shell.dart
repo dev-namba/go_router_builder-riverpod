@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_practice/router/routes/home/chat/chat_route.dart';
 import 'package:go_router_practice/router/routes/home/profile/profile_route.dart';
 import 'package:go_router_practice/router/routes/top_routes.dart';
@@ -13,6 +14,18 @@ class HomeShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int getCurrentIndex(BuildContext context) {
+      final location = GoRouterState.of(context).uri.toString();
+      switch (location) {
+        case '/home/chat':
+          return 0;
+        case '/home/profile':
+          return 1;
+        default:
+          return 0;
+      }
+    }
+
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -24,7 +37,6 @@ class HomeShell extends StatelessWidget {
             unselectedFontSize: 0,
             iconSize: 25,
             items: [
-              /// Miropos
               const BottomNavigationBarItem(
                 icon: Icon(Icons.chat_bubble),
                 activeIcon: Icon(Icons.chat_bubble),
@@ -36,7 +48,7 @@ class HomeShell extends StatelessWidget {
                 label: 'プロフィール',
               ),
             ],
-            currentIndex: 0,
+            currentIndex: getCurrentIndex(context),
             onTap: (index) {
               switch (index) {
                 case 0:
