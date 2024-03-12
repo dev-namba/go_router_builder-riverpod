@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router_practice/router/routes/home/chat/chat_route.dart';
 import 'package:go_router_practice/router/routes/home/profile/profile_route.dart';
 import 'package:go_router_practice/router/routes/top_routes.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeShell extends StatelessWidget {
+class HomeShell extends HookConsumerWidget {
   const HomeShell({
     required this.navigationShell,
     super.key,
@@ -13,18 +14,8 @@ class HomeShell extends StatelessWidget {
   final Widget navigationShell;
 
   @override
-  Widget build(BuildContext context) {
-    int getCurrentIndex(BuildContext context) {
-      final location = GoRouterState.of(context).uri.toString();
-      switch (location) {
-        case '/home/chat':
-          return 0;
-        case '/home/profile':
-          return 1;
-        default:
-          return 0;
-      }
-    }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = useState<int>(0);
 
     return PopScope(
       canPop: false,
@@ -48,7 +39,7 @@ class HomeShell extends StatelessWidget {
                 label: 'プロフィール',
               ),
             ],
-            currentIndex: getCurrentIndex(context),
+            currentIndex: currentIndex.value,
             onTap: (index) {
               switch (index) {
                 case 0:
@@ -56,6 +47,7 @@ class HomeShell extends StatelessWidget {
                 case 1:
                   ProfileRoute().go(context);
               }
+              currentIndex.value = index;
             },
           ),
         ),
